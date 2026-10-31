@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "author": "TwinSense Engineering Team",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-esp32-devkit-v1",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht22",
+      "top": -120,
+      "left": 140,
+      "attrs": { "temperature": "54.2", "humidity": "42" }
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "pot_vib",
+      "top": 180,
+      "left": -120,
+      "attrs": { "label": "Vibration / Load Proxy" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_green",
+      "top": -90,
+      "left": -80,
+      "attrs": { "color": "green", "label": "NORMAL" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_yellow",
+      "top": -90,
+      "left": -40,
+      "attrs": { "color": "yellow", "label": "WARN" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_red",
+      "top": -90,
+      "left": 0,
+      "attrs": { "color": "red", "label": "CRIT" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r_green",
+      "top": -40,
+      "left": -80,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r_yellow",
+      "top": -40,
+      "left": -40,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r_red",
+      "top": -40,
+      "left": 0,
+      "attrs": { "value": "220" }
+    }
+  ],
+  "connections": [
+    [ "esp:GND.1", "dht22:GND", "black", [ "v0" ] ],
+    [ "esp:3V3", "dht22:VCC", "red", [ "v0" ] ],
+    [ "esp:D15", "dht22:SDA", "green", [ "v0" ] ],
+
+    [ "esp:GND.1", "pot_vib:GND", "black", [ "v0" ] ],
+    [ "esp:3V3", "pot_vib:VCC", "red", [ "v0" ] ],
+    [ "esp:D34", "pot_vib:SIG", "orange", [ "v0" ] ],
+
+    [ "esp:D18", "r_green:1", "green", [ "v0" ] ],
+    [ "r_green:2", "led_green:A", "green", [ "v0" ] ],
+    [ "led_green:C", "esp:GND.2", "black", [ "v0" ] ],
+
+    [ "esp:D19", "r_yellow:1", "gold", [ "v0" ] ],
+    [ "r_yellow:2", "led_yellow:A", "gold", [ "v0" ] ],
+    [ "led_yellow:C", "esp:GND.2", "black", [ "v0" ] ],
+
+    [ "esp:D21", "r_red:1", "red", [ "v0" ] ],
+    [ "r_red:2", "led_red:A", "red", [ "v0" ] ],
+    [ "led_red:C", "esp:GND.2", "black", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}

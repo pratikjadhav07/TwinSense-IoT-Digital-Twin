@@ -1,0 +1,61 @@
+{
+  "model_name": "RandomForestClassifier",
+  "version": "1.0.0",
+  "dataset_samples": 10000,
+  "test_samples": 2000,
+  "classes": [
+    "Critical Condition",
+    "Elevated Risk",
+    "Normal"
+  ],
+  "metrics": {
+    "accuracy": 0.9995,
+    "precision": 0.9998,
+    "recall": 0.9991,
+    "f1_score": 0.9994,
+    "roc_auc": 1.0
+  },
+  "confusion_matrix": [
+    {
+      "actual": "Critical Condition",
+      "pred_critical_condition": 192,
+      "pred_elevated_risk": 0,
+      "pred_normal": 0
+    },
+    {
+      "actual": "Elevated Risk",
+      "pred_critical_condition": 0,
+      "pred_elevated_risk": 384,
+      "pred_normal": 1
+    },
+    {
+      "actual": "Normal",
+      "pred_critical_condition": 0,
+      "pred_elevated_risk": 0,
+      "pred_normal": 1423
+    }
+  ],
+  "feature_importance": [
+    {
+      "feature": "Slip Rpm",
+      "importance": 0.4578
+    },
+    {
+      "feature": "Rpm",
+      "importance": 0.3309
+    },
+    {
+      "feature": "Vibration Proxy",
+      "importance": 0.1275
+    },
+    {
+      "feature": "Temperature C",
+      "importance": 0.0584
+    },
+    {
+      "feature": "Load Percent",
+      "importance": 0.0253
+    }
+  ],
+  "isolation_forest_contamination": 0.05
+}
